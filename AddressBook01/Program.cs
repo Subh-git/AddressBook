@@ -1,13 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AddressBook01
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
-            Contacts myobj = new Contacts("Subhadeep", "Bhattacharjee", "Dohabora chuk", "123456", "subh@gmail.com", "jorhat", "assam", "111111");
-            Console.WriteLine("First Name: {0} Last Name: {1} Address: {2} Phone Number: {3} Email: {4} City: {5} State: {6} ZipCode: {7}",myobj.firstName,myobj.lastName, myobj.address, myobj.phoneNumber, myobj.email,myobj.city,myobj.state,myobj.zip);
+            //Class variable declaration
+            int num;
+            //below lines of code is executed at the begining to guide the user to enter their choice
+            Console.WriteLine("*****Welcome to the address book program*****");
+            Console.WriteLine();
+            Console.WriteLine("Select the option that you would like to perform.");
+            Console.WriteLine("1- Add contact, 2- View contact");
+            num = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+
+            switch(num)                                            //this switch case selects or enables the user to select multiple cases
+            {
+                case 1:
+                    AddressBook myobj1 = new AddressBook();
+                    myobj1.AddAddress();
+                    myobj1.View();
+                    break;
+
+                case 2:
+                    AddressBook myobj2 = new AddressBook();
+                    myobj2.View();
+                    break;
+            }
         }
+
     }
 }
