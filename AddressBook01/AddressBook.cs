@@ -12,7 +12,15 @@ namespace AddressBook01
     class AddressBook
     {
         //declaring a list with the class Contacts as the type
-        public List<Contacts> contact = new List<Contacts>();
+        //declaring adictionary with the already declared list inside of it as the value pair
+        public static List<Contacts> contact = new List<Contacts>();
+        public static Dictionary<string, List<Contacts>> addressBook = new Dictionary<string, List<Contacts>>();
+        //declaring it static so that we dont need to create an object in the program.cs
+        public static void AddTo(string name)              //this method is used to pass the new address book name to the dictionary
+        {
+            addressBook.Add(name, contact);
+        }
+
         public void AddAddress()
         {
             //creating a new object contactBook of the class Contacts to add addressess
@@ -72,7 +80,7 @@ namespace AddressBook01
             string fname = Console.ReadLine();      // taking the input of first name
             foreach (var Details in contact)
             {
-                if (fname == Details.firstName)
+                if (fname == Details.firstName)         //checking the equality of the first name
                 {
                     // below codes are similar to that of adding a contact.
                     Console.Write("Enter First Name - ");
