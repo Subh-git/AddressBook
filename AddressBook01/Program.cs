@@ -21,7 +21,7 @@ namespace AddressBook01
 
             while (keyPress != "n")
             {
-                Console.WriteLine("1- Add contact, 2- View all contacts, 3- Edit contact");
+                Console.WriteLine("1- Add contact, 2- View all contacts, 3- Edit contact, 4- Delete contact");
                 num = Convert.ToInt32(Console.ReadLine());
                 
                 switch (num)                                            //this switch case selects or enables the user to select multiple cases
@@ -36,6 +36,10 @@ namespace AddressBook01
 
                     case 3:
                         Person.Edit();                                  //method to edit the contacts
+                        break;
+
+                    case 4:
+                        Person.Delete();                                  //method to delete the contacts
                         break;
 
                 }
