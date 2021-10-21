@@ -102,5 +102,32 @@ namespace AddressBook01
 
 
         }
+
+        //below method is for deleting the contact in the address book based on the search result of the firstname
+        public void Delete()
+        {
+            Console.WriteLine("Enter the first name of the contact you want to Remove.");
+            Console.WriteLine();
+            string fname = Console.ReadLine();      // taking the input of first name
+            foreach (var Details in contact)
+            {
+                if (fname == Details.firstName)
+                {
+                    Console.WriteLine("Are you sure you want to delete this Contact? (y/n).");
+                    if (Console.ReadKey().Key == ConsoleKey.Y)
+                    {
+                        contact.Remove(Details);
+                        Console.WriteLine("\nContact is Deleted.");
+                        break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Contact is not present.Please enter correct contact firstname.");
+                }
+            }
+
+        }
     }
 }
+
