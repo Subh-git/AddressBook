@@ -30,7 +30,7 @@ namespace AddressBook01
 
                 while (keyPress != "n")
                 {
-                    Console.WriteLine("1- Add contact, 2- View all contacts, 3- Edit contact, 4- Delete contact");
+                    Console.WriteLine("1- Add contact, 2- View all contacts, 3- Edit contact, 4- Delete contact", "5- Search by city", "6- Serach by state");
                     num = Convert.ToInt32(Console.ReadLine());
 
                     switch (num)                                            //this switch case selects or enables the user to select multiple cases
@@ -48,14 +48,22 @@ namespace AddressBook01
                             break;
 
                         case 4:
-                            Person.Delete();                                  //method to delete the contacts
+                            Person.Delete();                               //method to delete the contacts
                             break;
+                       
+                        case 5:
+                            AddressBook.SearchWithCity();                  //searching with city 
+                            break;
+                        case 6:
+                            AddressBook.SearchWithState();                 //searching with state
+                            break;
+
 
                     }
                     Console.WriteLine("Do you wish to continue?----- Press (y/n)");
                     keyPress = Console.ReadLine();
                 }
-                AddressBook.AddTo(book);                         //calling the AddTo method to add the new address book in the dictionary
+                AddressBook.AddTo(book);                         //calling the AddTo method to add the new address book in the dictionary   
                 numberBook++;                                    //incrementing the variable
             }
         }

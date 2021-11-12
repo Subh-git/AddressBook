@@ -20,7 +20,6 @@ namespace AddressBook01
         {
             addressBook.Add(name, contact);
         }
-
         public void AddAddress()
         {
             //creating a new object contactBook of the class Contacts to add addressess
@@ -148,6 +147,7 @@ namespace AddressBook01
         /// <param name="contactBook">The contact book.</param>
         /// <returns></returns>
         /// we are returning integer values which we check at add address method to check for duplicate entries.
+       
         public static int SearchDuplicate(List<Contacts> contact, Contacts contactBook)            //this method takes the list and contactbook object of contacts class
         {
            foreach (var Details in contact)                     //iterating through all the elements in contact list 
@@ -166,6 +166,49 @@ namespace AddressBook01
             }
             return 0;
         }
+        //method of starting with city
+        public static void SearchWithCity()
+        {
+            Console.WriteLine("Please enter the name of the city");
+            string city = Console.ReadLine();
+            //foreach (KeyValuePair<string, List<Contacts>> item in addressBook)    //(will work if we can permenantly store data somewhere like and not temporary heap memory"
+            //{
+                foreach (var Details in contact)
+                {
+                    var person = contact.Find(p => p.city.Equals(city));
+                    if (person != null)
+                    {
+                        Console.WriteLine("{0} person resides in the {1}", Details.firstName, city);
+                    }
+                    else
+                    {
+                        //pass
+                    }
+                }
+            //}
+        }
+        //method of searching with state
+        public static void SearchWithState()
+        {
+            Console.WriteLine("Please enter the name of the state");
+            string state = Console.ReadLine();
+            //foreach (KeyValuePair<string, List<Contacts>> item in addressBook)    //(will work if we can permenantly store data somewhere like and not temporary heap memory"
+            //{
+            foreach (var Details in contact)
+            {
+                var person = contact.Find(p => p.state.Equals(state));
+                if (person != null)
+                {
+                    Console.WriteLine("{0} person resides in the {1}", Details.firstName, state);
+                }
+                else
+                {
+                    //pass
+                }
+            }
+            //}
+        }
+
     }
 }
 
