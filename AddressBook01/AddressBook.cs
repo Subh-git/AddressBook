@@ -27,23 +27,28 @@ namespace AddressBook01
             Contacts contactBook = new Contacts();
             Console.Write("Enter First Name - ");
             contactBook.firstName = Console.ReadLine();
-            Console.Write("Enter Last Name - ");
-            contactBook.lastName = Console.ReadLine();
-            Console.Write("Enter Address - ");
-            contactBook.address = Console.ReadLine();
-            Console.Write("Enter Phone number - ");
-            contactBook.phoneNumber = Console.ReadLine();
-            Console.Write("Enter Email ID - ");
-            contactBook.email = Console.ReadLine();
-            Console.Write("Enter City - ");
-            contactBook.city = Console.ReadLine();
-            Console.Write("Enter State - ");
-            contactBook.state = Console.ReadLine();
-            Console.Write("Enter ZIP code - ");
-            contactBook.zip = Console.ReadLine();
+            int check = SearchDuplicate(contact, contactBook);
+            //after enterring the first name, we check by invoking the Searchduplicate method and obtain the result in check variable.
+            if (check == 0)                //when its not duplicate. [0- no duplicate, 1- duplicate, no entry]
+            {
+                Console.Write("Enter Last Name - ");
+                contactBook.lastName = Console.ReadLine();
+                Console.Write("Enter Address - ");
+                contactBook.address = Console.ReadLine();
+                Console.Write("Enter Phone number - ");
+                contactBook.phoneNumber = Console.ReadLine();
+                Console.Write("Enter Email ID - ");
+                contactBook.email = Console.ReadLine();
+                Console.Write("Enter City - ");
+                contactBook.city = Console.ReadLine();
+                Console.Write("Enter State - ");
+                contactBook.state = Console.ReadLine();
+                Console.Write("Enter ZIP code - ");
+                contactBook.zip = Console.ReadLine();
 
-            //Addidng to the list
-            contact.Add(contactBook);
+                //Addidng to the list
+                contact.Add(contactBook);
+            }
         }
 
         public void View()                                              //this is  the method to view all the contacts stored currently
@@ -135,6 +140,31 @@ namespace AddressBook01
                 }
             }
 
+        }
+        /// <summary>
+        /// Searches for duplicate name entry while entering in the addressbook
+        /// </summary>
+        /// <param name="contact">The contact.</param>
+        /// <param name="contactBook">The contact book.</param>
+        /// <returns></returns>
+        /// we are returning integer values which we check at add address method to check for duplicate entries.
+        public static int SearchDuplicate(List<Contacts> contact, Contacts contactBook)            //this method takes the list and contactbook object of contacts class
+        {
+           foreach (var Details in contact)                     //iterating through all the elements in contact list 
+           {
+                var person = contact.Find(p => p.firstName.Equals(contactBook.firstName));       //using lambda and using the equals method
+                if (person != null)
+                {
+                    Console.WriteLine("Already this contact exist  with current first name -" + person.firstName);
+                    return 1;
+                }
+                else
+                { //nothing to put in else block as we dont wanrt to insert here
+                   return 0;
+                }
+                
+            }
+            return 0;
         }
     }
 }
