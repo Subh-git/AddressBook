@@ -56,6 +56,7 @@ namespace AddressBook01
             {
                 Console.WriteLine("This conatct already exists with firstname- " + contactBook.firstName);
             }
+            SortByFirstName(contact);                    //using this to sort all the incoming entries by FirstName
         }
 
         public void View()                                              //this is  the method to view all the contacts stored currently
@@ -394,6 +395,14 @@ namespace AddressBook01
             }
 
 
+        }
+        /// <summary>
+        /// Sorts the by the first name in alphabetical operator 
+        /// </summary>
+        /// <param name="contacts">The contacts.</param>
+        public void SortByFirstName(List<Contacts> contacts)
+        {
+            contact = contacts.OrderBy(p=> p.firstName).ToList();        //lamda fucntion is used
         }
     }
 }
