@@ -404,6 +404,29 @@ namespace AddressBook01
         {
             contact = contacts.OrderBy(p=> p.firstName).ToList();        //lamda fucntion is used
         }
+        /// <summary>
+        /// Sorts the contatcs list by the chosen factor
+        /// </summary>
+        /// <param name="contacts">The contacts.</param>
+        public void SortBy(List<Contacts> contacts)
+        {
+            Console.WriteLine("Select the option to Sort the contacts list. 1-City, 2- State, 3- Zip");
+            int num = Convert.ToInt32(Console.ReadLine());
+            if (num == 1)
+            {
+                contact = contacts.OrderBy(p => p.city).ToList();
+            }
+            else if (num == 2)
+            {
+                contact = contacts.OrderBy(p => p.state).ToList();
+            }
+            else if (num == 3)
+            {
+                contact = contacts.OrderBy(p => p.zip).ToList();
+            }
+            else { Console.WriteLine("Invalid selection. Please selecct between 1,2 and 3"); }
+           
+        }
     }
 }
 

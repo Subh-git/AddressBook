@@ -31,7 +31,7 @@ namespace AddressBook01
                 while (keyPress != "n")
                 {
                     Console.WriteLine("1- Add contact, 2- View all contacts, 3- Edit contact, 4- Delete contact, 5- Search by city, 6- Serach by state");
-                    Console.WriteLine("7- View by state/city, 8- Count by");
+                    Console.WriteLine("7- View by state/city, 8- Count by, 9- Sort by");
                     num = Convert.ToInt32(Console.ReadLine());
 
                     switch (num)                                            //this switch case selects or enables the user to select multiple cases
@@ -63,6 +63,9 @@ namespace AddressBook01
                             break;
                         case 8:
                             Person.CountBy();                              //Count by city or state
+                            break;
+                        case 9:
+                            Person.SortBy(AddressBook.contact);           //The option to sort by city,state or zip and then view using the view method
                             break;
 
                     }
